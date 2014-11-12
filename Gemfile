@@ -41,4 +41,13 @@ gem 'spring',        group: :development
 gem 'devise'
 gem 'haml-rails'
 gem 'twitter-bootstrap-rails'
-gem 'factory_girl_rails'
+gem 'byebug'
+
+group :development, :test do
+  gem 'factory_girl_rails'
+  gem 'rspec-rails'
+end
+
+group :test do
+  gem 'shoulda-matchers'
+end

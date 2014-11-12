@@ -11,7 +11,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141112172809) do
+ActiveRecord::Schema.define(version: 20141112213334) do
+
+  create_table "bookings", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "room_id"
+    t.datetime "date_and_time"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "bookings", ["room_id"], name: "index_bookings_on_room_id"
+  add_index "bookings", ["user_id"], name: "index_bookings_on_user_id"
+
+  create_table "rooms", force: true do |t|
+    t.string   "name",                   null: false
+    t.integer  "pax_limit",  default: 0
+    t.text     "comments"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "",    null: false
@@ -24,6 +43,7 @@ ActiveRecord::Schema.define(version: 20141112172809) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
+    t.string   "name",                                   null: false
     t.boolean  "admin",                  default: false
     t.datetime "created_at"
     t.datetime "updated_at"
