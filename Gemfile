@@ -42,6 +42,7 @@ gem 'devise'
 gem 'haml-rails'
 gem 'twitter-bootstrap-rails'
 gem 'byebug'
+gem 'simple_form'
 
 group :development, :test do
   gem 'factory_girl_rails'
