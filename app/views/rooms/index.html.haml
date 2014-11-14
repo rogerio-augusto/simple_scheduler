@@ -1,0 +1,26 @@
+= content_for :section_title do
+  Administração
+
+= content_for :page_title do
+  Salas
+
+.box
+  .box-header
+    %h3.box-title Listagem de salas
+  .box-body.table-responsive.no-padding
+    %table.table.table-hover
+      %tr
+        %th ID
+        %th Nome
+        %th Nr. pessoas
+        %th Observações
+        %th{style: 'width: 32px'}
+        %th{style: 'width: 32px'}
+      - @rooms.each do |room|
+        %tr
+          %td= room.id
+          %td= room.name
+          %td= room.pax_limit
+          %td= room.comments
+          %td= link_to icon('pencil-square-o'), edit_room_path(room)
+          %td= delete_link room_path(room), remote: true
