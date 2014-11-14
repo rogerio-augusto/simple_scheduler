@@ -40,9 +40,9 @@
               %ul.dropdown-menu
                 %li.user-footer
                   .pull-left
-                    = edit_link edit_user_path(current_user), style: 'color: #357ca5'
+                    = edit_link edit_admin_user_path(current_user), style: 'color: #357ca5'
                   .pull-right
-                    %a.btn.btn-default.btn-flat{:href => "#"} Sair
+                    = link_to icon('sign-out'), destroy_user_session_path(authenticity_token: form_authenticity_token), method: :delete, style: 'color: #357ca5'
     .wrapper.row-offcanvas.row-offcanvas-left
       / Left side column. contains the logo and sidebar
       %aside.left-side.sidebar-offcanvas
@@ -58,8 +58,8 @@
                 %span Administração
                 %i.fa.fa-angle-left.pull-right
               %ul.treeview-menu
-                %li{class: "#{params[:controller] == 'users' ? 'active' : ''}"}= link_to icon('angle-double-right', 'Usuários'), users_path
-                %li{class: "#{params[:controller] == 'rooms' ? 'active' : ''}"}= link_to icon('angle-double-right', 'Salas'), rooms_path
+                %li{class: "#{params[:controller] == 'users' ? 'active' : ''}"}= link_to icon('angle-double-right', 'Usuários'), admin_users_path
+                %li{class: "#{params[:controller] == 'rooms' ? 'active' : ''}"}= link_to icon('angle-double-right', 'Salas'), admin_rooms_path
         / /.sidebar
       / Right side column. Contains the navbar and content of the page
       %aside.right-side

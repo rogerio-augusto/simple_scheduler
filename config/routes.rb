@@ -6,9 +6,11 @@ Rails.application.routes.draw do
 
   root 'home#index'
   
-  resources :rooms
-  resources :users
-
+  namespace :admin do
+    resources :rooms
+    resources :users
+  end
+  
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

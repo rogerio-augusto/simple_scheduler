@@ -22,5 +22,5 @@
           %td= room.name
           %td= room.pax_limit
           %td= room.comments
-          %td= link_to icon('pencil-square-o'), edit_room_path(room)
-          %td= delete_link room_path(room), remote: true
+          %td= link_to icon('pencil-square-o'), edit_admin_room_path(room)
+          %td= delete_link admin_room_path(room), remote: true

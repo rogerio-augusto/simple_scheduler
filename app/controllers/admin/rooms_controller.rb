@@ -1,4 +1,4 @@
-class RoomsController < ApplicationController
+class Admin::RoomsController < ApplicationController
   respond_to :html, :json
   
   def index

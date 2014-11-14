@@ -1,18 +1,15 @@
-.center-block.testbox
-  %h1 Log in
+#login-box.form-box
+  .header Log in
   = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-    .field
-      %label{id: "icon", for: "email"}
-        %i.icon-envelope
-      = f.email_field :email, autofocus: true
-    .field
-      %label{id: "icon", for: "password"}
-        %i.icon-shield
-      = f.password_field :password, autocomplete: "off"
-    - if devise_mapping.rememberable?
-      .field
-        = f.check_box :remember_me
-        = f.label :remember_me
-    %center
-      = f.submit "Log in", class: 'btn btn-primary', style: 'text-align: center'
-  = render "devise/shared/links"
+    .body.bg-gray
+      .form-group
+        = f.email_field :email, autofocus: true, class: 'form-control'
+      .form-group
+        = f.password_field :password, autocomplete: "off", class: 'form-control'
+      - if devise_mapping.rememberable?
+        .form-group
+          = f.check_box :remember_me
+          = f.label :remember_me
+    .footer
+      %button.btn.bg-olive.btn-block{:type => "submit"} Log in
+      = render "devise/shared/links"
