@@ -1,4 +1,7 @@
 class Booking < ActiveRecord::Base
+  extend SimpleCalendar
+  has_calendar
+  
   belongs_to :user
   belongs_to :room
   

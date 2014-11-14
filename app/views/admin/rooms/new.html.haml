@@ -1,0 +1,12 @@
+= content_for :section_title do
+  Administração
+
+= content_for :page_title do
+  Nova sala
+
+.box.box-primary{style: 'width: 50%'}
+  .box-header
+    %h3.box-title Nova sala
+
+  = simple_form_for @room, url: admin_rooms_path do |f|
+    = render 'form_fields', f: f

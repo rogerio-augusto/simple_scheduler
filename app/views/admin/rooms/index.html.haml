@@ -7,6 +7,8 @@
 .box
   .box-header
     %h3.box-title Listagem de salas
+    .pull-right
+      = link_to "Nova sala", new_admin_room_path, class: 'btn btn-primary btn-xs', style: 'color: #fff; margin-top: 10px; margin-right: 10px'
   .box-body.table-responsive.no-padding
     %table.table.table-hover
       %tr
@@ -17,10 +19,10 @@
         %th{style: 'width: 32px'}
         %th{style: 'width: 32px'}
       - @rooms.each do |room|
-        %tr
+        %tr{class: "room-#{room.id}"}
           %td= room.id
           %td= room.name
           %td= room.pax_limit
           %td= room.comments
           %td= link_to icon('pencil-square-o'), edit_admin_room_path(room)
-          %td= delete_link admin_room_path(room), remote: true
+          %td= delete_link admin_room_path(room, authenticity_token: form_authenticity_token), remote: true

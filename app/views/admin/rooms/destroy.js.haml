@@ -1,0 +1,4 @@
+- if @room.errors.empty?
+  $(".room-#{@room.id}").fadeOut(2000);
+
+$('#flash-messages').html("#{j(bootstrap_flash)}");

@@ -15,8 +15,7 @@ module ApplicationHelper
   end
   
   def delete_link(path, options = {})
-    opts = { :confirm => t('warnings.confirm_destroy'),
-             :method => :delete }.merge(options)
+    opts = { data: { confirm: t('warnings.confirm_destroy') }, :method => :delete }.merge(options)
 
     link_to icon('trash-o'), path, opts
   end

@@ -71,6 +71,7 @@
               = yield :page_title
         / Main content
         %section.content
-          = bootstrap_flash
+          #flash-messages
+            = bootstrap_flash
           = yield
   = javascript_include_tag "AdminLTE/app"
