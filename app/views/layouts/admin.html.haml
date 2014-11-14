@@ -52,14 +52,14 @@
           %ul.sidebar-menu
             %li{class: "#{params[:controller] == 'home' ? 'active' : ''}"}
               = link_to icon('calendar', 'Calendário'), root_path
-            %li.treeview{class: "#{params[:controller] == 'rooms' ? 'active' : ''}"}
+            %li.treeview{class: "#{params[:controller] == 'admin/rooms' ? 'active' : ''}"}
               %a{:href => "#"}
                 %i.fa.fa-folder
                 %span Administração
                 %i.fa.fa-angle-left.pull-right
               %ul.treeview-menu
-                %li{class: "#{params[:controller] == 'users' ? 'active' : ''}"}= link_to icon('angle-double-right', 'Usuários'), admin_users_path
-                %li{class: "#{params[:controller] == 'rooms' ? 'active' : ''}"}= link_to icon('angle-double-right', 'Salas'), admin_rooms_path
+                %li{class: "#{params[:controller] == 'admin/users' ? 'active' : ''}"}= link_to icon('angle-double-right', 'Usuários'), admin_users_path
+                %li{class: "#{params[:controller] == 'admin/rooms' ? 'active' : ''}"}= link_to icon('angle-double-right', 'Salas'), admin_rooms_path
         / /.sidebar
       / Right side column. Contains the navbar and content of the page
       %aside.right-side
@@ -73,6 +73,4 @@
         %section.content
           = bootstrap_flash
           = yield
-        / /.content
-      / /.right-side
-    / ./wrapper
+  = javascript_include_tag "AdminLTE/app"
