@@ -1,3 +1,10 @@
+GIT
+  remote: git://github.com/rogerio-augusto/simple_calendar.git
+  revision: c125984e1e69b9e0df34e82baca46031b6139c3d
+  specs:
+    simple_calendar (1.1.7)
+      rails (>= 3.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -132,8 +139,6 @@ GEM
       rdoc (~> 4.0)
     shoulda-matchers (2.7.0)
       activesupport (>= 3.0.0)
-    simple_calendar (1.1.7)
-      rails (>= 3.0)
     simple_form (3.0.2)
       actionpack (~> 4.0)
       activemodel (~> 4.0)
@@ -184,7 +189,7 @@ DEPENDENCIES
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)
   shoulda-matchers
-  simple_calendar
+  simple_calendar!
   simple_form
   spring
   sqlite3

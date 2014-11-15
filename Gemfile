@@ -44,7 +44,7 @@ gem 'twitter-bootstrap-rails'
 gem 'byebug'
 gem 'simple_form'
 gem 'jquery-ui-rails'
-gem 'simple_calendar'
+gem 'simple_calendar', :github => 'rogerio-augusto/simple_calendar'
 
 group :development, :test do
   gem 'factory_girl_rails'
