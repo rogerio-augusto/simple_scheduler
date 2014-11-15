@@ -11,18 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141112213334) do
+ActiveRecord::Schema.define(version: 20141115005718) do
 
-  create_table "bookings", force: true do |t|
+  create_table "meetings", force: true do |t|
     t.integer  "user_id"
     t.integer  "room_id"
-    t.datetime "date_and_time"
+    t.datetime "starts_at"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.datetime "ends_at"
   end
 
-  add_index "bookings", ["room_id"], name: "index_bookings_on_room_id"
-  add_index "bookings", ["user_id"], name: "index_bookings_on_user_id"
+  add_index "meetings", ["room_id"], name: "index_meetings_on_room_id"
+  add_index "meetings", ["user_id"], name: "index_meetings_on_user_id"
 
   create_table "rooms", force: true do |t|
     t.string   "name",                   null: false

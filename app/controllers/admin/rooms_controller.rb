@@ -1,5 +1,5 @@
 class Admin::RoomsController < ApplicationController
-  respond_to :html, :json, :js
+  respond_to :html, :js
   
   def index
     @rooms = Room.all
