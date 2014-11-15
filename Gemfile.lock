@@ -1,6 +1,5 @@
-GIT
-  remote: git://github.com/rogerio-augusto/simple_calendar.git
-  revision: c125984e1e69b9e0df34e82baca46031b6139c3d
+PATH
+  remote: /Users/rogerio/projects/simple_calendar
   specs:
     simple_calendar (1.1.7)
       rails (>= 3.0)

@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   root 'home#index'
+  resources :meetings
   
   namespace :admin do
     resources :rooms

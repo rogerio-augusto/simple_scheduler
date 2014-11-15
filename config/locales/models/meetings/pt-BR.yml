@@ -1,0 +1,14 @@
+'pt-BR':
+  activerecord:
+    models:
+      meeting:
+        one: Reunião
+        other: Reuniões
+    attributes:
+      meeting:
+        user_id: Usuário
+        user: Usuário
+        room_id: Sala
+        room: Sala
+        starts_at: Início
+        ends_at: Término

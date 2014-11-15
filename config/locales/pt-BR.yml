@@ -1,6 +1,8 @@
 pt-BR:
   warnings:
     confirm_destroy: 'Esta operação é irreversível, confirma a exclusão?'
+  labels:
+    meeting_time: 'Horário'
   date:
     abbr_day_names:
     - Dom
@@ -36,6 +38,7 @@ pt-BR:
       default: ! '%d/%m/%Y'
       long: ! '%d de %B de %Y'
       short: ! '%d de %B'
+      day_and_month: ! '%d/%m'
     month_names:
     -
     - Janeiro

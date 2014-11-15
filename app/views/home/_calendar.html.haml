@@ -1,0 +1,7 @@
+.box
+  = week_table(week_table_config) do |datetime, meetings|
+    / = l(datetime, format: :time_only)
+    - if meetings.empty? && room.present?
+      .label.label-primary= "#{icon('calendar')} #{room.name} disponível".html_safe
+    - meetings.each do |meeting|
+      .label.label-warning= "#{icon('user')} #{meeting.user.name}".html_safe

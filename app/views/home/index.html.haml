@@ -1,6 +1,6 @@
-.box 
-  = week_calendar events: @meetings, table: {class: "table table-hover"}, header: {class: 'box-header'}, title: ->(start_date) { content_tag :h3, "#{I18n.t("date.month_names")[start_date.month]} #{start_date.year}", class: "box-title" }, previous_link: ->(param, date_range) { link_to(raw("&laquo;"), {param => date_range.first - 1.day}, {class: 'pull-left previous-week-link'}) }, next_link: ->(param, date_range) { link_to(raw("&raquo;"), {param => date_range.last + 1.day}, class: 'next-week-link pull-left') } do |date, meetings|
-    = l(date)
-    - meetings.each do |meeting|
-      %div= meeting.user.name
-      %div= "Horário: #{l(meeting.starts_at, format: :time_only)}"
+= simple_form_for @meeting do |f|
+  .form-group
+    = f.association :room, collection: Room.all, prompt: 'Escolha uma sala:', allow_blank: false, label: false, input_html: {class: 'form-control', style: 'width: 200px', data: {start_date: @start_date}}
+
+#calendar
+  = render 'calendar', room: @room
