@@ -6,7 +6,6 @@
     %meta{:content => "width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no", :name => "viewport"}/
 
     = stylesheet_link_tag "//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.min.css"    
-    / Ionicons
     = stylesheet_link_tag "//code.ionicframework.com/ionicons/1.5.2/css/ionicons.min.css"
     / HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries
     / WARNING: Respond.js doesn't work if you view the page via file://
@@ -16,14 +15,10 @@
     = stylesheet_link_tag "application", :media => "all"
     = javascript_include_tag "application"
   %body.skin-blue
-    / header logo: style can be found in header.less
     %header.header
       %a.logo{:href => "index.html"}
-        / Add the class icon to your logo image or logo icon to add the margining
-        AdminLTE
-      / Header Navbar: style can be found in header.less
+        Simple Calendar
       %nav.navbar.navbar-static-top{:role => "navigation"}
-        / Sidebar toggle button
         %a.navbar-btn.sidebar-toggle{"data-toggle" => "offcanvas", :href => "#", :role => "button"}
           %span.sr-only Toggle navigation
           %span.icon-bar
@@ -31,28 +26,24 @@
           %span.icon-bar
         .navbar-right
           %ul.nav.navbar-nav
-            / User Account: style can be found in dropdown.less
             %li.dropdown.user.user-menu
-              %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+              %a.pull-left{:href => "#"}
                 %span
                   = current_user.name
-                  %i.caret
-              %ul.dropdown-menu
-                %li.user-footer
-                  .pull-left
-                    = edit_link edit_admin_user_path(current_user), style: 'color: #357ca5'
-                  .pull-right
-                    = link_to icon('sign-out'), destroy_user_session_path(authenticity_token: form_authenticity_token), method: :delete, style: 'color: #357ca5'
+              .pull-right{style: 'margin-right: 15px; margin-top: 15px;'}
+                = link_to icon('sign-out'), destroy_user_session_path(authenticity_token: form_authenticity_token), method: :delete
     .wrapper.row-offcanvas.row-offcanvas-left
-      / Left side column. contains the logo and sidebar
       %aside.left-side.sidebar-offcanvas
-        / sidebar: style can be found in sidebar.less
         %section.sidebar
-          / sidebar menu: : style can be found in sidebar.less
+          / TODO: implementar o menu de forma adequada com a gem simple_navigation
+          / https://github.com/codeplant/simple-navigation
           %ul.sidebar-menu
             %li{class: "#{params[:controller] == 'home' ? 'active' : ''}"}
-              = link_to icon('calendar', 'Calendário'), root_path
-            %li.treeview{class: "#{params[:controller] == 'admin/rooms' ? 'active' : ''}"}
+              = link_to root_path do
+                %a{:href => "#"}
+                  %i.fa.fa-calendar
+                  %span Calendário
+            %li.treeview{class: "#{['admin/rooms', 'admin/users'].include?(params[:controller]) ? 'active' : ''}"}
               %a{:href => "#"}
                 %i.fa.fa-folder
                 %span Administração
@@ -60,16 +51,12 @@
               %ul.treeview-menu
                 %li{class: "#{params[:controller] == 'admin/users' ? 'active' : ''}"}= link_to icon('angle-double-right', 'Usuários'), admin_users_path
                 %li{class: "#{params[:controller] == 'admin/rooms' ? 'active' : ''}"}= link_to icon('angle-double-right', 'Salas'), admin_rooms_path
-        / /.sidebar
-      / Right side column. Contains the navbar and content of the page
       %aside.right-side
-        / Content Header (Page header)
         %section.content-header
           %h1
             = yield :section_title
             %small
               = yield :page_title
-        / Main content
         %section.content
           #flash-messages
             = bootstrap_flash

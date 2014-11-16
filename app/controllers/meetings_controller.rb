@@ -45,8 +45,11 @@ class MeetingsController < ApplicationController
     end
     
     def setup_calendar_variables
-      if params[:start_date].present?
-        @start_date = params[:start_date].to_date rescue Date.today
+      starts_at = params[:meeting].try(:[],:starts_at)
+      starts_at ||= params[:start_date]
+
+      if starts_at.present?
+        @start_date = starts_at.to_date rescue Date.today
       else
         @start_date = Date.today
       end

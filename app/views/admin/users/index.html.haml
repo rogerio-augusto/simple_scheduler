@@ -1,0 +1,27 @@
+= content_for :section_title do
+  Administração
+
+= content_for :page_title do
+  Usuários (Pendente: CRUD)
+
+.box
+  .box-header
+    %h3.box-title Listagem de usuários
+    - if current_user.admin?
+      .pull-right
+        = link_to "Novo usuário", 'javascript:void(0);', class: 'btn btn-primary btn-xs', style: 'color: #fff; margin-top: 10px; margin-right: 10px', title: 'Pendente'
+  .box-body.table-responsive.no-padding
+    %table.table.table-hover
+      %tr
+        %th ID
+        %th Nome
+        %th Email
+        %th{style: 'width: 32px'}
+        %th{style: 'width: 32px'}
+      - @users.each do |user|
+        %tr{class: "user-#{user.id}"}
+          %td= user.id
+          %td= user.name
+          %td= user.email
+          %td= link_to icon('pencil-square-o'), 'javascript:void(0);', title: 'Pendente'
+          %td= delete_link('javascript:void(0);', title: 'Pendente')
