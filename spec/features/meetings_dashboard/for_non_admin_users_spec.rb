@@ -30,7 +30,7 @@ feature "A non-admin user accessing the meetings calendar", :type => :feature do
     expect(page.find('.meeting-container.date-20141111080000 .create-meeting')).to be_truthy
   end
   
-  scenario "should not show the delete icon for other users meetings" do
+  scenario "should not see the delete icon for other users meetings" do
     within('.meeting-container.date-20141111090000') do
       expect{ find('.delete-link') }.to raise_error(Capybara::ElementNotFound)
       expect(find('i.fa-user span').text).to eq(@derp2.name)
