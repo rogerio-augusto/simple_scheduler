@@ -2,7 +2,7 @@ module MeetingsHelper
   def week_table_config
     { events: @meetings, 
       table: {
-        class: "table table-hover", 
+        class: "table table-hover calendar", 
         style: 'marging-bottom: 0'
       }, 
       header: {

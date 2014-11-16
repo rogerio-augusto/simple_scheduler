@@ -1,7 +1,7 @@
 class MeetingsController < ApplicationController
   respond_to :html, :js
   
-  before_filter :setup_calendar_variables, only: [:index, :create]
+  before_filter :setup_calendar_variables
 
   def index
     @meetings = Meeting.where(starts_at: @week_start..@week_end)

@@ -16,3 +16,11 @@
 //= require twitter/bootstrap
 //= require turbolinks
 //= require_tree .
+
+$(document).on('click', 'a.has-spinner', function(){
+  $(this).find('i').addClass('fa-circle-o-notch fa-spin');
+});
+
+$(document).ajaxStop(function(){
+  $('a i').removeClass('fa-circle-o-notch fa-spin');
+});

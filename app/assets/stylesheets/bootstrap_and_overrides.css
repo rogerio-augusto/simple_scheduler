@@ -10,6 +10,7 @@ body {
   background-color: #f9f9f9;
 }
 
-i span {
-  padding-left: 5px;
+a i {
+  margin-left: 3px;
+  margin-right: 3px;
 }
