@@ -12,3 +12,7 @@
         room: Sala
         starts_at: Início
         ends_at: Término
+    errors:
+      models:
+        meeting:
+          you_shall_not_pass: 'Sua conta não tem acesso à esta operação'

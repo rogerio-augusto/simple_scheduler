@@ -1,6 +1,11 @@
 pt-BR:
   warnings:
     confirm_destroy: 'Esta operação é irreversível, confirma a exclusão?'
+    user_audit_required: 'Esta operação requer um usuário logado'
+  flash_messages:
+    record_successfully_created: 'Registro criado com sucesso'
+    record_successfully_updated: 'Atualizado com sucesso'
+    record_successfully_deleted: 'Registro excluído com sucesso'
   labels:
     meeting_time: 'Horário'
   date:

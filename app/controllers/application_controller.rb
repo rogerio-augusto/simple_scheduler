@@ -4,6 +4,12 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   
   before_action :authenticate_user!, unless: :devise_controller?
+
+  # Set the current_user in a way to be accessible for models
+  # Lasts for the current request
+  before_filter do |c|
+    SessionData.set_current_user(c.current_user)
+  end
   
   # Helper to extract model errors formatted for flash messages
   def error_list_from(model_obj)

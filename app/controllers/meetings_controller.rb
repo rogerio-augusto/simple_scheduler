@@ -1,18 +1,10 @@
 class MeetingsController < ApplicationController
   respond_to :html, :js
+  
+  before_filter :setup_calendar_variables, only: [:index, :create]
 
   def index
-    if params[:start_date].present?
-      @start_date = params[:start_date].to_date rescue Date.today
-    else
-      @start_date = Date.today
-    end
-    
-    week_start = @start_date.beginning_of_week
-    week_end = @start_date.end_of_week
-    
-    @meeting = Meeting.new
-    @meetings = Meeting.where(starts_at: week_start..week_end)
+    @meetings = Meeting.where(starts_at: @week_start..@week_end)
     
     respond_with @meetings
   end
@@ -20,14 +12,26 @@ class MeetingsController < ApplicationController
   def create
     @meeting = Meeting.new(meeting_params)
     @meeting.user = current_user
-
-    @start_date = params[:start_date].to_date rescue Date.today.beginning_of_week
-    @meetings = Meeting.all
     
     respond_to do |format|
       if @meeting.save
-        @meetings = Meeting.all
-        format.js { flash.now[:notice] = 'Criou a sala' }
+        # reload meetings
+        @meetings = Meeting.where(starts_at: @week_start..@week_end)
+        format.js { flash.now[:notice] = I18n.t('flash_messages.record_successfully_created') }
+      else
+        format.js { flash.now[:error] = error_list_from @meeting }
+      end
+    end
+  end
+  
+  def destroy
+    @meeting = Meeting.find(params[:id])
+    
+    respond_to do |format|
+      if @meeting.destroy
+        # reload meetings
+        @meetings = Meeting.where(starts_at: @week_start..@week_end)
+        format.js { flash.now[:notice] = I18n.t('flash_messages.record_successfully_deleted') }
       else
         format.js { flash.now[:error] = error_list_from @meeting }
       end
@@ -38,5 +42,17 @@ class MeetingsController < ApplicationController
 
     def meeting_params
       params.require(:meeting).permit(:starts_at, :ends_at)
+    end
+    
+    def setup_calendar_variables
+      if params[:start_date].present?
+        @start_date = params[:start_date].to_date rescue Date.today
+      else
+        @start_date = Date.today
+      end
+    
+      @week_start = @start_date.beginning_of_week
+      @week_end = @start_date.end_of_week    
+      @meeting = Meeting.new
     end
 end
