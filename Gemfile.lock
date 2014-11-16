@@ -1,5 +1,6 @@
-PATH
-  remote: /Users/rogerio/projects/simple_calendar
+GIT
+  remote: git://github.com/rogerio-augusto/simple_calendar.git
+  revision: d1ef2cdd8ed85a59204dcd62220dcb6bd4d97f4e
   specs:
     simple_calendar (1.1.7)
       rails (>= 3.0)
@@ -83,7 +84,7 @@ GEM
       railties (>= 4.0.1)
     hike (1.2.3)
     i18n (0.6.11)
-    jbuilder (2.2.4)
+    jbuilder (2.2.5)
       activesupport (>= 3.0.0, < 5)
       multi_json (~> 1.2)
     jquery-rails (3.1.2)
