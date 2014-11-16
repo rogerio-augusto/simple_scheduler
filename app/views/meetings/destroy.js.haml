@@ -1,0 +1,4 @@
+- if @meeting.errors.empty?
+  $('#calendar').html("#{j(render partial: 'meetings/calendar')}")
+
+$('#flash-messages').html("#{j(bootstrap_flash)}");

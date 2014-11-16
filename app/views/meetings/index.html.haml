@@ -1,0 +1,6 @@
+= simple_form_for @meeting, remote: true do |f|
+  = hidden_field_tag :authenticity_token, form_authenticity_token
+  = f.input :starts_at, as: :hidden
+
+#calendar
+  = render 'calendar'

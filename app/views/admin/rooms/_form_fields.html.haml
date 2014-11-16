@@ -1,0 +1,7 @@
+.box-body
+  .form-group
+    = f.input :name, required: true, input_html: { class: 'form-control' }
+  .form-group
+    = f.input :pax_limit, input_html: { class: 'form-control' }
+.box-footer
+  %button.btn.btn-primary{:type => "submit"} Confirmar

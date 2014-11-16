@@ -3,8 +3,6 @@ source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.7'
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
 # Use Uglifier as compressor for JavaScript assets
@@ -41,4 +39,22 @@ gem 'spring',        group: :development
 gem 'devise'
 gem 'haml-rails'
 gem 'twitter-bootstrap-rails'
-gem 'factory_girl_rails'
+gem 'byebug'
+gem 'simple_form'
+gem 'jquery-ui-rails'
+gem 'simple_calendar', :github => 'rogerio-augusto/simple_calendar'
+
+group :production do
+  gem "pg"
+  gem 'rails_12factor' # Heroku required
+end
+
+group :development, :test do
+  gem 'sqlite3'
+  gem 'factory_girl_rails'
+  gem 'rspec-rails'
+  gem 'capybara'
+  gem 'selenium-webdriver'
+  gem 'database_cleaner'
+  gem 'shoulda-matchers'
+end

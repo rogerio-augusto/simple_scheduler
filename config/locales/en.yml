@@ -21,3 +21,5 @@
 
 en:
   hello: "Hello world"
+  warnings:
+    confirm_destroy: 'This operation cannot be undone, are you sure?'

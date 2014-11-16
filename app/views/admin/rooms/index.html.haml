@@ -1,0 +1,28 @@
+= content_for :section_title do
+  Administração
+
+= content_for :page_title do  
+  Salas (Pendente: implementar associação com o calendário para o usuário escolher a sala)
+
+.box
+  .box-header
+    %h3.box-title Listagem de salas
+    .pull-right
+      = link_to "Nova sala", new_admin_room_path, class: 'btn btn-primary btn-xs', style: 'color: #fff; margin-top: 10px; margin-right: 10px'
+  .box-body.table-responsive.no-padding
+    %table.table.table-hover
+      %tr
+        %th ID
+        %th= Room.human_attribute_name(:name)
+        %th= Room.human_attribute_name(:pax_limit)
+        %th= Room.human_attribute_name(:comments)
+        %th{style: 'width: 32px'}
+        %th{style: 'width: 32px'}
+      - @rooms.each do |room|
+        %tr{class: "room-#{room.id}"}
+          %td= room.id
+          %td= room.name
+          %td= room.pax_limit
+          %td= room.comments
+          %td= link_to icon('pencil-square-o'), edit_admin_room_path(room)
+          %td= delete_link admin_room_path(room, authenticity_token: form_authenticity_token), remote: true

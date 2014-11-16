@@ -1,0 +1,11 @@
+'pt-BR':
+  activerecord:
+    models:
+      room:
+        one: Sala
+        other: Salas
+    attributes:
+      room:
+        name: Nome
+        pax_limit: Nr. de pessoas
+        comments: Observações

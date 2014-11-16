@@ -11,7 +11,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141112172809) do
+ActiveRecord::Schema.define(version: 20141115005718) do
+
+  create_table "meetings", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "room_id"
+    t.datetime "starts_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.datetime "ends_at"
+  end
+
+  add_index "meetings", ["room_id"], name: "index_meetings_on_room_id"
+  add_index "meetings", ["user_id"], name: "index_meetings_on_user_id"
+
+  create_table "rooms", force: true do |t|
+    t.string   "name",                   null: false
+    t.integer  "pax_limit",  default: 0
+    t.text     "comments"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "",    null: false
@@ -24,6 +44,7 @@ ActiveRecord::Schema.define(version: 20141112172809) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
+    t.string   "name",                                   null: false
     t.boolean  "admin",                  default: false
     t.datetime "created_at"
     t.datetime "updated_at"

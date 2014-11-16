@@ -1,0 +1,16 @@
+.box
+  = week_table(week_table_config) do |datetime, meetings|
+    .meeting-container{class: "date-#{datetime.to_s(:number)}"}
+      - if meetings.empty?
+        .label.label-primary.pull-left= 'Disponível'
+        .small.pull-left
+          = link_to icon('calendar'), 'javascript:void(0);', class: 'create-meeting has-spinner', data: {starts_at: datetime.to_formatted_s(:db)}
+      - else
+        - meetings.each do |meeting|
+          - if meeting.user_id == current_user.id || current_user.admin?
+            .pull-left
+              = icon('user', meeting.user_name, {class: 'label label-warning'})
+            .small.pull-left{style: 'margin-top: 4px;'}
+              = delete_link meeting_path(meeting, authenticity_token: form_authenticity_token, start_date: @start_date), style: 'color: #f0ad4e', class: 'has-spinner delete-link', remote: true
+          - else
+            .label.label-warning= icon('user', meeting.user_name)
