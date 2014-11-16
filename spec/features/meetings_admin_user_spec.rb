@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature "Meetings calendar page", :type => :feature do
+feature "An admin user accessing the meetings calendar", :type => :feature do
   given(:today) { '2014-11-13'.to_date }
 
   background do

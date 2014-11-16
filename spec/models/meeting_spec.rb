@@ -10,7 +10,8 @@ RSpec.describe Meeting, :type => :model do
     subject { FactoryGirl.build :meeting }
     
     it 'should provide access to the user name' do
-      expect(subject.user_name).to eq('Test User')
+      user = subject.user
+      expect(subject.user_name).to eq(user.name)
     end
   end
   

@@ -5,7 +5,6 @@ class MeetingsController < ApplicationController
 
   def index
     @meetings = Meeting.where(starts_at: @week_start..@week_end)
-    
     respond_with @meetings
   end
   
