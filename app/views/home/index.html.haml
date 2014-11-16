@@ -1,6 +1,0 @@
-= simple_form_for @meeting do |f|
-  .form-group
-    = f.association :room, collection: Room.all, prompt: 'Escolha uma sala:', allow_blank: false, label: false, input_html: {class: 'form-control', style: 'width: 200px', data: {start_date: @start_date}}
-
-#calendar
-  = render 'calendar', room: @room

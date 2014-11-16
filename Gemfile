@@ -50,8 +50,8 @@ gem 'simple_calendar', :path => "/Users/rogerio/projects/simple_calendar"
 group :development, :test do
   gem 'factory_girl_rails'
   gem 'rspec-rails'
-end
-
-group :test do
+  gem 'capybara'
+  gem 'selenium-webdriver'
+  gem 'database_cleaner'
   gem 'shoulda-matchers'
 end

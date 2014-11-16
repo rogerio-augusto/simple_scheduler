@@ -1,0 +1,11 @@
+.box
+  = week_table(week_table_config) do |datetime, meetings|
+    - if meetings.empty?
+      = link_to icon('calendar', 'Disponível'), 'javascript:void(0);', class: 'label label-primary create-meeting', data: {starts_at: datetime.in_time_zone(Time.zone).to_s}
+    - else
+      - meetings.each do |meeting|
+        - if meeting.user_id == current_user.id || current_user.admin?
+          = icon('user', meeting.user_name, {class: 'label label-warning'})
+          = link_to icon('trash-o'), 'javascript:void(0)', class: 'remove-meeting small', style: 'color: #f0ad4e', data: {meeting_id: meeting.id}
+        - else
+          .label.label-warning= icon('user', meeting.user_name)

@@ -3,7 +3,7 @@ class Meeting < ActiveRecord::Base
   has_calendar
   
   belongs_to :user
-  belongs_to :room
+  delegate :name, to: :user, prefix: true, allow_nil: true
   
-  validates :user_id, :room_id, :starts_at, presence: true
+  validates :user_id, :starts_at, presence: true
 end
