@@ -90,7 +90,7 @@ RSpec.describe MeetingsController, :type => :controller do
       end
 
       it 'should reload the meetings variable' do
-        post(:create, meeting: { starts_at: '2014-11-13 09:00' }, format: :js)
+        post(:create, meeting: { starts_at: '2014-11-13 11:00' }, format: :js)
         expect(assigns(:meetings)).to include(assigns(:meeting))
       end
     end
@@ -106,7 +106,7 @@ RSpec.describe MeetingsController, :type => :controller do
   describe 'DELETE #destroy as JS' do
     context 'with permissions to destroy a meeting' do
       before(:each) do
-        @meeting_to_destroy = FactoryGirl.create(:meeting, starts_at: '2014-11-14 15:00', user: @admin)
+        @meeting_to_destroy = FactoryGirl.create(:meeting, starts_at: '2014-11-14 19:00', user: @admin)
         sign_in @admin
       end
       
@@ -118,7 +118,7 @@ RSpec.describe MeetingsController, :type => :controller do
     
     context 'without permissions to destroy a meeting' do
       before(:each) do
-        @meeting_to_destroy = FactoryGirl.create(:meeting, starts_at: '2014-11-14 15:00', user: @admin)
+        @meeting_to_destroy = FactoryGirl.create(:meeting, starts_at: '2014-11-14 16:00', user: @admin)
         sign_in @derp
       end
       
