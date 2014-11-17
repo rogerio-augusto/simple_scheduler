@@ -4,6 +4,21 @@ RSpec.describe Meeting, :type => :model do
   context "Basic validations" do
     it { is_expected.to validate_presence_of :user }
     it { is_expected.to validate_presence_of :starts_at }
+    
+    it 'should not create more than one meeting at the same hour' do
+      user = FactoryGirl.create(:user)
+      meeting_a = FactoryGirl.create(:meeting, user: user, starts_at: '2014-11-11 09:20')
+      
+      meeting_b = FactoryGirl.build(:meeting, user: user, starts_at: '2014-11-11 09:00')
+      meeting_c = FactoryGirl.build(:meeting, user: user, starts_at: '2014-11-11 09:59')
+      meeting_d = FactoryGirl.build(:meeting, user: user, starts_at: '2014-11-11 10:00')
+
+      expect(meeting_b.save).to be_falsey
+      expect(meeting_b.errors.messages).to eq({starts_at: [I18n.t('activerecord.errors.models.meeting.only_one_meeting_day_and_hour')]})
+      expect(meeting_c.save).to be_falsey
+      expect(meeting_c.errors.messages).to eq({starts_at: [I18n.t('activerecord.errors.models.meeting.only_one_meeting_day_and_hour')]})
+      expect(meeting_d.save).to be_truthy
+    end
   end
   
   context "Respecting Demeter's Law" do
@@ -14,7 +29,7 @@ RSpec.describe Meeting, :type => :model do
       expect(subject.user_name).to eq(user.name)
     end
   end
-  
+    
   context "User permissions" do
     before(:each) do
       @admin = FactoryGirl.build(:user, admin: true)

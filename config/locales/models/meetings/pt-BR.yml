@@ -16,3 +16,4 @@
       models:
         meeting:
           you_shall_not_pass: 'Sua conta não tem acesso à esta operação'
+          only_one_meeting_day_and_hour: 'Já existe uma reserva para este horário'
